@@ -1,0 +1,36 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数组</title>
+</head>
+<script>
+	// 数组添加 和删除元素 
+	// push(): 元素添加到数组末尾  pop(): 删除数组最后的一个元素
+	// unshift(): 元素添加到数组首位  shift(): 删除数组第一个元素
+	// splice() : 第一个参数为索引，第二个参数为删除元素的个数；后面的参数为要添加的元素
+
+	var fibonacci = [];
+	fibonacci[0] = 1;
+	fibonacci[1] = 2; 
+	for(var i=2;i<20;i++){
+		fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+	}
+	
+	function printAry(ary){
+		for(var i=0,len = ary.length;i<len;i++){
+			console.log(ary[i]);
+		}
+	}
+
+	fibonacci.push("tail")
+	fibonacci.unshift("head")
+	printAry(fibonacci);
+
+	fibonacci.pop();
+	fibonacci.shift();
+	printAry(fibonacci);
+</script>
+<body>
+</body>
+</html>
