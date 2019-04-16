@@ -1,0 +1,66 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数组</title>
+</head>
+<script>
+//  数组的迭代方法
+
+	var fibonacci = [];
+	fibonacci[0] = 1;
+	fibonacci[1] = 2; 
+	for(var i=2;i<5;i++){
+		fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+	}
+	
+	function printAry(ary){
+		for(var i=0,len = ary.length;i<len;i++){
+			console.log(ary[i]);
+		}
+	}
+	printAry(fibonacci); // 1 2 3 5 8 
+	console.log("-----------------")
+
+
+// some 有一项为true 就为true
+// every 每一项返回true 才为true
+var isEven = function(item){
+	return item%2==0
+}
+
+console.log(fibonacci.every(isEven)); // false
+console.log(fibonacci.some(isEven));  // true
+console.log("-----------------")
+
+//map 返回每次函数调用的结果组成的函数
+console.log(fibonacci.map(isEven)); //  [false, true, false, false, true]
+
+// filter 返回过滤的项
+console.log(fibonacci.filter(isEven)); // [2, 8]
+
+// reduce  
+console.log(fibonacci.reduce(function(prev,cur,index,arr){
+	return prev + cur;
+})); //   19 
+
+// reduceRight
+console.log(fibonacci.reduceRight(function(prev,cur,index,arr){
+	return prev + cur;
+})); //   19 
+
+fibonacci.forEach(function(item,index,arr){
+	console.log(index +" : "+item)
+})
+console.log("-----------------")
+
+// sort 排序
+var arr1 = [23,7,41,17,33]; 
+arr1.sort(function(a,b){ // 升序排列
+	return a-b;
+})
+printAry(arr1);
+</script>
+<body>
+</body>
+</html>

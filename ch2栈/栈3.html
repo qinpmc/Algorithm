@@ -1,0 +1,36 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>栈</title>
+</head>
+<script src="./Stack.js"></script>
+<script>
+	//  
+	var stack = new Stack();
+
+	// 转任意进制
+	function converter(decNumber,base){
+		var remStack = new Stack(),
+			rem,
+			baseString = "",
+			digits = "0123456789ABCDEF";
+		while(decNumber > 0){
+			rem = Math.floor(decNumber%base); // 余数
+			remStack.push(rem);
+			decNumber = Math.floor( decNumber/base ); // js 中数字为浮点数，此处需取整
+		}
+		while(!remStack.isEmpty()){
+			baseString += digits[remStack.pop()].toString();
+		}
+		return baseString;
+
+	}
+
+	console.log(converter(233,2));  //11101001
+	console.log(converter(233,16));  //E9
+	console.log(converter(100345,16));  // 187F9
+</script>
+<body>
+</body>
+</html>

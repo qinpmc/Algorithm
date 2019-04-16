@@ -1,0 +1,34 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>栈</title>
+</head>
+<script src="./Stack.js"></script>
+<script>
+	//  
+	var stack = new Stack();
+
+	// 转2进制
+	function divideBy2(decNumber){
+		var remStack = new Stack(),
+			rem,
+			binaryString = "";
+		while(decNumber > 0){
+			rem = decNumber%2; // 余数
+			remStack.push(rem);
+			decNumber = Math.floor( decNumber/2 ); // js 中数字为浮点数，此处需取整
+		}
+		while(!remStack.isEmpty()){
+			binaryString += remStack.pop().toString();
+		}
+		return binaryString;
+
+	}
+
+	console.log(divideBy2(233)); //11101001
+	
+</script>
+<body>
+</body>
+</html>
