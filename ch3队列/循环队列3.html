@@ -1,0 +1,36 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>队列</title>
+</head>
+<script src="./Queue.js"></script>
+<script>
+	//  
+	
+
+	function hotPotao(nameList,num){
+		var queue = new Queue();
+		for(var i=0;i<nameList.length;i++){
+			queue.enqueue(nameList[i])
+		} 
+
+		var eliminated = '';
+		while(queue.size() >1){
+			for(var i=0;i<num;i++){
+				queue.enqueue(queue.dequeue())
+			}
+			eliminated = queue.dequeue();
+			console.log(eliminated + "淘汰");
+		}
+		return queue.dequeue(); // 返回胜利者
+	}
+	var names = ["John","Jack","Camila","Ingrid","Carl"];
+	var num = Math.random()*10+10;
+	var winner = hotPotao(names,num);
+	
+	console.log(winner + "胜利")
+</script>
+<body>
+</body>
+</html>
