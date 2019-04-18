@@ -1,0 +1,23 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>队列</title>
+</head>
+<script src="./LinkedList.js"></script>
+<script>
+	//  
+	var linkedList = new LinkedList();
+
+	linkedList.append("John");
+	linkedList.append("John2");
+	linkedList.append("John3");
+	linkedList.insert(1,"John2-1");
+	linkedList.print(); // John John2-1 John2 John3 
+
+	linkedList.remove("John2-1");
+	linkedList.print(); // John John2 John3 
+</script>
+<body>
+</body>
+</html>
