@@ -1,0 +1,26 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>队列</title>
+</head>
+<script src="./DbLinkedList.js"></script>
+<script>
+	//  
+	var dbLinkedList = new DbLinkedList();
+	var names = ["John","John2","John3"]
+
+	dbLinkedList.append(names[0]);
+	dbLinkedList.append(names[1]);
+	dbLinkedList.append(names[2]);
+	//linkedList.insert(1,"John2-1");
+	dbLinkedList.print(); // John John2-1 John2 John3 
+
+	console.log(dbLinkedList.indexOf(names[2]))
+
+	//linkedList.remove("John2-1");
+	//linkedList.print(); // John John2 John3 
+</script>
+<body>
+</body>
+</html>
