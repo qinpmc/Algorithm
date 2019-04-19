@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="Set.js"></script>
+    <script>
+
+        var set = new Set();
+        set.add("set1");
+        set.add("set2");
+        set.add("set2");
+        set.add("set3");
+
+        
+
+        var otherSet = new Set();
+        otherSet.add("set3");
+        otherSet.add("set3");
+        otherSet.add("set4");
+        otherSet.add("set4");
+        
+
+        var intersectSet = set.intersection(otherSet);
+        console.log(intersectSet.values()); // ["set3"]
+        
+        var differSet = set.difference(otherSet);
+        console.log(differSet.values()); // ["set1", "set2"]
+
+        console.log(set.subset(otherSet)); // false
+
+
+    </script>
+</body>
+</html>
