@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./Map.js"></script>
+    <script>
+        var map = new Map();
+        map.set("name","qq1");
+        map.set("name","qq1");
+        map.set("name2","qq2");
+        map.set("name3","qq3");
+
+        console.log(map.getItems()); 
+        // Object
+        //         name: "qq1"
+        //         name2: "qq2"
+        //         name3: "qq3"
+
+        console.log(map.keys()); 
+        console.log(map.values()); 
+    </script>
+</body>
+</html>
