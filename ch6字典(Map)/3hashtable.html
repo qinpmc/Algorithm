@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../ch4链表/LinkedList.js"></script>
+    <script src="./HashTable2.js"></script>
+    <script>
+        var hash = new HashTable();
+        hash.put('Gandalf', 'gandalf@email.com');
+        hash.put('John', 'johnsnow@email.com');
+        hash.put('Tyrion', 'tyrion@email.com');
+        hash.put('Aaron', 'aaron@email.com');
+        hash.put('Donnie', 'donnie@email.com');
+        hash.put('Ana', 'ana@email.com');
+        hash.put('Jonathan', 'jonathan@email.com');
+        hash.put('Jamie', 'jamie@email.com');
+        hash.put('Sue', 'sue@email.com');
+        hash.put('Mindy', 'mindy@email.com');
+        hash.put('Paul', 'paul@email.com');
+        hash.put('Nathan', 'nathan@email.com');
+        
+        hash.print();
+
+        //console.log(hash.get('Jamie'))   // 链表中间
+        //console.log(hash.get('Jonathan')); // 链表第一个
+        console.log(hash.get('Sue')) // 链表最后一个
+    </script>
+</body>
+</html>
