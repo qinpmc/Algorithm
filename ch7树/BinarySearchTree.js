@@ -6,14 +6,14 @@ function BinarySearchTree(){
         this.left = null;
         this.right = null;
     }
-    var root = null;
+    this.root = null;
 
     this.insert = function(key){
         var newNode = new Node(key);
-        if(root ===null){
-            root = newNode;
+        if(this.root ===null){
+            this.root = newNode;
         }else{
-            insertNode(root,newNode);
+            insertNode(this.root,newNode);
         }
     }
 
@@ -34,7 +34,7 @@ function BinarySearchTree(){
     }
 
     this.inOrderTraverse = function(callback){
-        inOrderTraverseNode(root,callback)
+        inOrderTraverseNode(this.root,callback)
     }
 
     var inOrderTraverseNode = function(node,callback){
@@ -46,7 +46,7 @@ function BinarySearchTree(){
     }
 
     this.preOrderTraverse = function(callback){
-        preOrderTraverseNode(root,callback)
+        preOrderTraverseNode(this.root,callback)
     }
 
     var preOrderTraverseNode = function(node,callback){
@@ -58,7 +58,7 @@ function BinarySearchTree(){
     }
 
     this.postOrderTraverse = function(callback){
-        postOrderTraverseNode(root,callback)
+        postOrderTraverseNode(this.root,callback)
     }
 
     var postOrderTraverseNode = function(node,callback){
@@ -70,7 +70,7 @@ function BinarySearchTree(){
     }
 
     this.min = function(){
-        return minNode(root);
+        return minNode(this.root);
     }
 
     var minNode = function(node){
@@ -85,7 +85,7 @@ function BinarySearchTree(){
 
 
     this.max = function(){
-        return maxNode(root);
+        return maxNode(this.root);
     }
 
     var maxNode = function(node){
@@ -99,7 +99,7 @@ function BinarySearchTree(){
     }
 
     this.search = function(key){
-        return searchNode(root,key)
+        return searchNode(this.root,key)
     }
     var searchNode = function(node,key){
         if(node===null){
@@ -115,4 +115,69 @@ function BinarySearchTree(){
             return searchNode(node.right,key)
         }
     }
+
+    this.remove = function(key){
+        removeNode(this.root,key);
+    }
+
+    function findNextLevelLeftOrRight(node){ //查找 node 下级节点的子节点：下级节点的右子节点或下级节点的左子节点
+        var tempNode = node.left;
+        var aux = null;
+        if(tempNode.right!==null){ // 下级左节点的子右节点存在
+            aux = tempNode.right;
+            return [aux,"left"];
+        }else{
+            tempNode = node.right;
+            if(tempNode.left!==null){ // 下级右节点的子左节点存在
+                aux = tempNode.left;
+                return [aux,"right"];
+            }
+        }
+        return null;
+        
+    }
+    let that = this;
+    var removeNode = function(node,key){
+        if(node===null){
+            return null;
+        }
+         
+        if(node.key>key){
+            removeNode(node.left,key)
+        }else if(node.key<key){
+            removeNode(node.right,key)
+        }else{ //要remove的key 和 node的key相等
+            if(node.left===null && node.right===null){ //只有一个叶节点
+                node =null;
+                return node
+            }
+            if(node.left===null ){
+                node = node.right;
+                return node;
+            }
+            if(node.right===null ){
+                node = node.left;
+                console.log(that);
+                return node;
+                
+            }
+            // 有2个子节点--即有 左右 子节点
+
+            var auxAry = findNextLevelLeftOrRight(node);
+            if(auxAry){ // 查找到下级节点的右子节点或下级节点的左子节点
+                node.key = auxAry[0].key;
+                var flag = auxAry[1];
+                if(flag==="left"){
+                    removeNode(node.left,node.key)
+                }else {
+                    removeNode(node.right,node.key)
+                }
+            } else{ // 未查找到下级节点的右子节点或下级节点的左子节点，此时没有合适的子节点替换要删除的node
+                node.key = node.left.key;
+                removeNode(node.left,node.key)
+            }
+
+        }
+    }
+
 }
