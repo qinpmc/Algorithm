@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        function bucketSort(nums) {
+            let n = nums.length;
+            let mn = nums[0], mx = nums[0];
+            // 找出数组中的最大最小值
+            for (i = 1; i < n; i++) {
+                mn = Math.min(mn, nums[i]);
+                mx = Math.max(mx, nums[i]);
+            }
+            let size = Math.floor((mx - mn) / n) + 1; // 每个桶存储数的范围大小，使得数尽量均匀地分布在各个桶中，保证最少存储一个
+            let cnt =  Math.floor((mx - mn) / size) + 1; // 桶的个数，保证桶的个数至少为1
+            let buckets = new Array(cnt); // 声明cnt个桶
+            for (i = 0; i < cnt; i++) {
+                buckets[i] = [];
+            }
+            // 扫描一遍数组，将数放进桶里
+            for (i = 0; i < n; i++) {
+                let idx = Math.floor((nums[i] - mn) / size);
+                buckets[idx].push(nums[i]);
+            }
+            // 对各个桶中的数进行排序，这里用库函数快速排序
+            for (i = 0; i < cnt; i++) {
+                buckets[i].sort((a,b) => a-b); // 默认是按从小打到排序
+            }
+            // 依次将各个桶中的数据放入返回数组中
+            let index = 0;
+            for (i = 0; i < cnt; i++) {
+                for (j = 0; j < buckets[i].length; j++) {
+                    nums[index++] = buckets[i][j];
+                }
+            }
+        }
+
+        let nums = [19, 27, 35, 43, 31, 22, 54, 66, 78]
+        bucketSort(nums)
+        console.log(nums)
+    </script>
+</body>
+
+</html>
